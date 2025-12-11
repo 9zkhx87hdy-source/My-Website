@@ -118,6 +118,27 @@ body {
 .title-layout {
   text-align: center;
   z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Custom Image Styling for Title Slide */
+.title-image-container {
+    width: 80%;
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    margin: 30px auto;
+    border: 4px solid #fff;
+}
+
+.title-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area nicely */
 }
 
 /* Two Column Tiled */
@@ -329,75 +350,49 @@ body {
     font-size: 100px;
     color: #1e3a8a;
 }
-/* Layout สำหรับสไลด์ที่ต้องการให้รูปอยู่ด้านข้างข้อความ */
-.slide-container.bleed-image-layout {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr;  /* ซ้าย:ข้อความ | ขวา:รูป */
-  align-items: stretch;
-}
 
-/* ให้กล่องข้อความด้านซ้ายดูไม่ชิดเกินไป */
-.bleed-image-layout .content-container {
-  padding-right: 40px;
-}
-
-/* กล่องรูปฝั่งขวาให้กินพื้นที่สูงสุดของสไลด์ */
-.bleed-image-layout .image-container {
-  height: 100%;
-}
-
-/* จัดให้รูปขยายเต็มกล่องด้านขวา */
-.bleed-image-layout .image-container img.bleed-image-side {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
     </style>
 </head>
 <body>
 
-<!-- Slide 1: Title Slide -->
+<!-- Slide 1: Title Slide (UPDATED WITH YOUR IMAGE) -->
 <div class="slide-container" id="slide1">
     <div class="title-layout">
         <h1>รุกตามซุนวู vs รุกแบบคลอสวิทซ์</h1>
-        <hr style="width: 150px; border: 3px solid #b91c1c; margin: 30px auto;">
+        
+        <!-- *** ส่วนที่เพิ่มรูปภาพของคุณ *** -->
+        <div class="title-image-container">
+            <!-- ตั้งชื่อไฟล์รูปของคุณเป็น my_image.jpg แล้ววางไว้ในโฟลเดอร์เดียวกัน -->
+            <img src="my_image.jpg" 
+                 onerror="this.src='https://placehold.co/800x300/e2e8f0/1e3a8a?text=Please+save+your+image+as:+my_image.jpg'" 
+                 alt="Sun Tzu vs Clausewitz Visual">
+        </div>
+        
         <p class="subtitle">การเปรียบเทียบเชิงลึก: ปรัชญาตะวันออกและทฤษฎีการทหารตะวันตก</p>
-        <p class="subtitle" style="font-size: 20px; margin-top: 20px;">Comparative Analysis of Sun Tzu & Carl von Clausewitz</p>
+        <hr style="width: 150px; border: 3px solid #b91c1c; margin: 20px auto;">
+        <p class="subtitle" style="font-size: 20px; margin-top: 10px;">Comparative Analysis of Sun Tzu & Carl von Clausewitz</p>
     </div>
 </div>
 
 <!-- Slide 2: Intro (Bleed Image Right) -->
-<div class="slide-container" id="slide2"
-     style="display: flex; align-items: stretch;">
-
-  <!-- ฝั่งซ้าย: เนื้อหาในกรอบน้ำเงิน -->
-  <div style="flex: 2; background-color: #0b3b82; color: #ffffff; padding: 60px 50px;">
-      <h2 class="slide-title" style="color: #ffffff; margin-bottom: 20px;">
-          สองขั้วความคิด<br>แห่งยุทธศาสตร์
-      </h2>
-      <hr style="width: 150px; border: 3px solid #91c1c9; margin: 0 0 25px 0;">
-
-      <h3 style="color: #93c5fd; margin-top: 10px;">ซุนวู (Sun Tzu)</h3>
-      <p style="margin-top: 8px;">
-          ตัวแทนภูมิปัญญาตะวันออก เน้นความยืดหยุ่น การลวงศัตรู
-          และการเอาชนะด้วยปัญญาโดยไม่เสียเลือดเนื้อ
-      </p>
-
-      <h3 style="color: #fda4af; margin-top: 20px;">คลอสวิทซ์ (Clausewitz)</h3>
-      <p style="margin-top: 8px;">
-          บิดาทฤษฎีการทหารตะวันตก เน้นพลังการรบ มวลกำลัง
-          และการทำลายกำลังข้าศึกเพื่อผลลัพธ์ทางการเมือง
-      </p>
-  </div>
-
-  <!-- ฝั่งขวา: รูปภาพ -->
-  <div style="flex: 1.5; background-color: #fcf4df;">
-      <img src="Watercolor Sun Tzu Portrait.png"
-           alt="ภาพวาดซุนวู"
-           style="width: 100%; height: 100%; object-fit: cover; display: block;">
-  </div>
-
+<div class="slide-container bleed-image-layout" id="slide2">
+    <div class="content-container">
+        <h2 class="slide-title">สองขั้วความคิด<br>แห่งยุทธศาสตร์</h2>
+        <div class="content-area">
+            <h3 style="color: #93c5fd;">ซุนวู (Sun Tzu)</h3>
+            <p>ตัวแทนภูมิปัญญาตะวันออก เน้นความยืดหยุ่น การลวง และการเอาชนะด้วยปัญญาโดยไม่เสียเลือดเนื้อ</p>
+            <br>
+            <h3 style="color: #fda4af;">คลอสวิทซ์ (Clausewitz)</h3>
+            <p>บิดาทฤษฎีการทหารตะวันตก เน้นพลังการรบ มวลกำลัง และการทำลายล้างเพื่อผลลัพธ์ทางการเมือง</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <!-- เปลี่ยนชื่อไฟล์เป็น suntzu_portrait.jpg -->
+        <img class="bleed-image-side" 
+             src="suntzu_portrait.jpg" 
+             onerror="this.src='https://placehold.co/600x720/1e3a8a/ffffff?text=Save+Image+As:+suntzu_portrait.jpg'" 
+             alt="รูปปั้นซุนวู">
+    </div>
 </div>
 
 <!-- Slide 3: Philosophy & Essence (Two Column Tiled) -->
@@ -431,7 +426,10 @@ body {
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15501732414668879754" alt="ภาพวาดการรบยุคนโปเลียนแสดงถึงความรุนแรงและมวลกำลัง">
+                 <!-- เปลี่ยนชื่อไฟล์เป็น napoleon_war.jpg -->
+                <img src="napoleon_war.jpg" 
+                     onerror="this.src='https://placehold.co/600x500/b91c1c/ffffff?text=Save+Image+As:+napoleon_war.jpg'" 
+                     alt="ภาพวาดการรบ">
             </div>
         </div>
     </div>
@@ -523,7 +521,11 @@ body {
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/16641495304973141665" alt="ภาพวาดม้วนคัมภีร์จีนโบราณแสดงแผนการรบ">
+        <!-- เปลี่ยนชื่อไฟล์เป็น ancient_scroll.jpg -->
+        <img class="bleed-image-side" 
+             src="ancient_scroll.jpg" 
+             onerror="this.src='https://placehold.co/600x720/f4f0e6/333333?text=Save+Image+As:+ancient_scroll.jpg'" 
+             alt="ภาพวาดม้วนคัมภีร์">
     </div>
 </div>
 
@@ -575,7 +577,10 @@ body {
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15143299809089085221" alt="เทคโนโลยีโดรนสมัยใหม่">
+                 <!-- เปลี่ยนชื่อไฟล์เป็น drone_tech.jpg -->
+                <img src="drone_tech.jpg" 
+                     onerror="this.src='https://placehold.co/600x500/1e3a8a/ffffff?text=Save+Image+As:+drone_tech.jpg'" 
+                     alt="เทคโนโลยีโดรน">
             </div>
         </div>
     </div>
@@ -610,19 +615,7 @@ body {
     </div>
 </div>
 
-<!-- Slide 13: Q&A -->
-<div class="slide-container" id="slide13">
-    <div class="qa-layout">
-        <h2>Q&A</h2>
-        <p>เปิดรับคำถามและแลกเปลี่ยนความคิดเห็น</p>
-    </div>
-</div>
+<!-- Removed Q&A Slide -->
 
 </body>
 </html>
-
-
-
-
-
-
