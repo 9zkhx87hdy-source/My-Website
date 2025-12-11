@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Tzu vs Clausewitz: The Art of Offense</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d1d5db; /* Neutral grey background for browser */
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+  place-items: center;
+}
+
+/* Slide Container */
+.slide-container {
+  align-items: center;
+  background-color: #fcfbf4; /* Cream background for slides */
+  border-radius: 4px; /* Sharp, professional corners */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 2. TYPOGRAPHY */
+
+/* Thai Font Support */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3,
+.slide-container .slide-title,
+.slide-container .subtitle,
+.slide-container p,
+.slide-container li,
+.slide-container th,
+.slide-container td,
+.slide-container blockquote,
+.slide-container cite {
+  font-family: 'Sarabun', sans-serif; /* Best for Thai text */
+}
+
+/* Headings (English fallback to Merriweather) */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #1e3a8a; /* Deep Strategy Blue */
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.slide-container h1 {
+  font-size: 72px;
+  margin-bottom: 20px;
+}
+
+.slide-container .slide-title {
+  font-size: 48px;
+  color: #1e3a8a;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  border-bottom: 3px solid #b91c1c; /* Red accent line */
+  padding-bottom: 15px;
+}
+
+.slide-container h3 {
+  font-size: 28px;
+  color: #b91c1c; /* Accent Red for sub-headers */
+  margin-bottom: 15px;
+}
+
+.slide-container p,
+.slide-container li {
+  color: #374151;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+.slide-container .subtitle {
+  color: #4b5563;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.slide-container .content-area {
+  align-items: flex-start; /* Changed to start for better text flow */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. LAYOUTS */
+
+/* Title Layout */
+.title-layout {
+  text-align: center;
+  z-index: 2;
+}
+
+/* Two Column Tiled */
+.two-column {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+.two-column.tiled > div {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border-left: 5px solid #1e3a8a;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  padding: 40px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.two-column.tiled h3 {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Image Right Text Left */
+.image-wrapper {
+  border-radius: 8px;
+  height: 100%;
+  max-height: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensure consistency */
+}
+
+.two-column .image-wrapper img {
+    object-fit: contain; /* Specific for this layout as requested */
+    background-color: #f3f4f6;
+}
+
+/* Bleed Image Right */
+.slide-container.bleed-image-layout {
+  align-items: start;
+  display: grid;
+  gap: 0; /* No gap for bleed */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+}
+
+.slide-container.bleed-image-layout > .content-container {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background-color: #1e3a8a; /* Dark Blue Side */
+}
+
+.slide-container.bleed-image-layout > .content-container h2,
+.slide-container.bleed-image-layout > .content-container h3,
+.slide-container.bleed-image-layout > .content-container p {
+    color: #fcfbf4; /* Light text on dark background */
+}
+
+.slide-container.bleed-image-layout > .content-container h2 {
+    border-color: #fcfbf4;
+}
+
+.slide-container.bleed-image-layout > .image-container {
+  height: 100%;
+  width: 100%;
+}
+
+.slide-container.bleed-image-layout img.bleed-image-side {
+  height: 100%;
+  max-height: 720px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tiled Text with Icons */
+.tiled-content {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+.tile {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  flex: 1;
+  padding: 30px;
+  text-align: center;
+  border-top: 5px solid #b91c1c;
+}
+
+.tile .icon {
+  color: #1e3a8a;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+/* Table Layout */
+.table-layout {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.table-layout table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-layout th,
+.table-layout td {
+  padding: 15px 20px; /* Reduced padding to fit content */
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-layout th {
+  background-color: #1e3a8a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.table-layout td {
+  background-color: #fff;
+  font-size: 18px; /* Slightly smaller for table density */
+}
+
+.table-layout tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+
+/* Quote Layout */
+.quote-layout {
+  text-align: center;
+  width: 80%;
+}
+
+.quote-layout blockquote {
+  font-size: 40px;
+  font-style: italic;
+  color: #1e3a8a;
+  position: relative;
+  margin: 40px 0;
+}
+
+.quote-layout blockquote::before {
+  content: '\201C';
+  font-size: 120px;
+  color: #b91c1c;
+  opacity: 0.2;
+  position: absolute;
+  top: -40px;
+  left: -40px;
+}
+
+.quote-layout cite {
+  font-size: 24px;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* Bullet List */
+.bullet-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-list li {
+  margin-bottom: 20px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.bullet-list li::before {
+  content: '\f054'; /* FontAwesome Chevron Right */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #b91c1c;
+}
+
+/* Q&A */
+.qa-layout {
+    text-align: center;
+}
+.qa-layout h2 {
+    font-size: 100px;
+    color: #1e3a8a;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title Slide -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>รุกตามซุนวู vs รุกแบบคลอสวิทซ์</h1>
+        <hr style="width: 150px; border: 3px solid #b91c1c; margin: 30px auto;">
+        <p class="subtitle">การเปรียบเทียบเชิงลึก: ปรัชญาตะวันออกและทฤษฎีการทหารตะวันตก</p>
+        <p class="subtitle" style="font-size: 20px; margin-top: 20px;">Comparative Analysis of Sun Tzu & Carl von Clausewitz</p>
+    </div>
+</div>
+
+<!-- Slide 2: Intro (Bleed Image Right) -->
+<div class="slide-container bleed-image-layout" id="slide2">
+    <div class="content-container">
+        <h2 class="slide-title">สองขั้วความคิด<br>แห่งยุทธศาสตร์</h2>
+        <div class="content-area">
+            <h3 style="color: #93c5fd;">ซุนวู (Sun Tzu)</h3>
+            <p>ตัวแทนภูมิปัญญาตะวันออก เน้นความยืดหยุ่น การลวง และการเอาชนะด้วยปัญญาโดยไม่เสียเลือดเนื้อ</p>
+            <br>
+            <h3 style="color: #fda4af;">คลอสวิทซ์ (Clausewitz)</h3>
+            <p>บิดาทฤษฎีการทหารตะวันตก เน้นพลังการรบ มวลกำลัง และการทำลายล้างเพื่อผลลัพธ์ทางการเมือง</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/14307987205709512335" alt="รูปปั้นซุนวูแสดงถึงความสงบนิ่งและปัญญา">
+    </div>
+</div>
+
+<!-- Slide 3: Philosophy & Essence (Two Column Tiled) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">ปรัชญาและแก่นของการรุก</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3><i class="fa-solid fa-water" style="margin-right:10px;"></i>ซุนวู: ชนะโดยไม่รบ</h3>
+                <p><strong>รากฐาน:</strong> เน้นความยืดหยุ่น ความคล่องตัว และการลวง (Deception)</p>
+                <p><strong>แก่นการรุก:</strong> "ชนะโดยไม่รบ" คือยอดของยุทธศาสตร์ การรุกมีเป้าหมายเพื่อทำลายจิตใจและจังหวะของข้าศึก</p>
+            </div>
+            <div>
+                <h3><i class="fa-solid fa-gavel" style="margin-right:10px;"></i>คลอสวิทซ์: บดขยี้แกนกลาง</h3>
+                <p><strong>รากฐาน:</strong> เน้นพลังการรบ (Combat Power) และการโจมตีศูนย์กลางอำนาจ</p>
+                <p><strong>แก่นการรุก:</strong> ต้อง "บีบ บด ทำลาย" แกนกลางกำลังรบของศัตรู (Center of Gravity) ให้สิ้นสภาพ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Nature & Goal (Image Right Text Left) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">ธรรมชาติและเป้าหมายของสงคราม</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <ul class="bullet-list">
+                    <li><strong>ซุนวู: สงครามคือกลอุบาย (War = Deception)</strong><br>เป้าหมายคือการทำให้ศัตรู "ยอมแพ้โดยไร้ทางเลือกที่ดี" ผ่านการสร้างสถานการณ์</li>
+                    <li style="margin-top: 30px;"><strong>คลอสวิทซ์: การเมืองวิถีอื่น (Politics by Other Means)</strong><br>เป้าหมายคือการบังคับให้ศัตรู "หมดความสามารถในการต่อสู้" ด้วยกำลังทางทหาร</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15501732414668879754" alt="ภาพวาดการรบยุคนโปเลียนแสดงถึงความรุนแรงและมวลกำลัง">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Sun Tzu Principles (Tiled Icons) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">หลักการรุกสำคัญ: ซุนวู (避實擊虛)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>ตีจุดอ่อน</h3>
+                <p>หลีกเลี่ยงจุดแข็งของศัตรู แล้วโจมตีในจุดที่ศัตรูไม่ได้ป้องกันหรืออ่อนแอที่สุด</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-mask"></i></div>
+                <h3>ใช้กลลวง</h3>
+                <p>สร้างข้อมูลเท็จ ให้ศัตรูสับสน "รุกเมื่อศัตรูไม่คาดคิด"</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                <h3>คุมจังหวะ</h3>
+                <p>เป็นฝ่ายกำหนดเวลาและสถานที่ในการรบ ไม่ใช่ถูกศัตรูกำหนด</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Clausewitz Principles (Tiled Icons) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">หลักการรุกสำคัญ: คลอสวิทซ์ (Center of Gravity)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-crosshairs"></i></div>
+                <h3>โจมตีศูนย์ดุล</h3>
+                <p>มุ่งเป้าที่ "Center of Gravity" เช่น กองกำลังหลัก เมืองหลวง หรือผู้นำ</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-fire"></i></div>
+                <h3>รวมกำลัง</h3>
+                <p>ใช้มวลกำลัง (Mass) และอำนาจการยิง (Firepower) ในจุดชี้ขาด</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-forward"></i></div>
+                <h3>รุกต่อเนื่อง</h3>
+                <p>รักษาโมเมนตัมการรุก ไม่เปิดโอกาสให้ศัตรูตั้งตัวได้</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Force & Casualties (Two Column Tiled) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">มุมมองต่อกำลังรบและความสูญเสีย</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>ซุนวู: ประหยัดกำลัง</h3>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>การใช้กำลัง:</strong> ใช้น้อยให้ได้มาก (Force Multiplier)</li>
+                    <li><strong>ความสูญเสีย:</strong> มองว่าการสูญเสียไพร่พลจำนวนมากคือ "ความผิดพลาดเชิงยุทธศาสตร์"</li>
+                    <li><strong>อุดมคติ:</strong> ชนะโดยประเทศชาติและกองทัพยังสมบูรณ์</li>
+                </ul>
+            </div>
+            <div>
+                <h3>คลอสวิทซ์: ทุ่มเทกำลัง</h3>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>การใช้กำลัง:</strong> ใช้กำลังปริมาณมากที่สุดในจุดแตกหัก</li>
+                    <li><strong>ความสูญเสีย:</strong> มองว่าเป็นสิ่ง "หลีกเลี่ยงไม่ได้" (Necessary Cost) หากแลกมาด้วยการทำลายกำลังข้าศึก</li>
+                    <li><strong>อุดมคติ:</strong> ชัยชนะเด็ดขาดจากการรบแตกหัก</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Psychology (Bleed Image Right) -->
+<div class="slide-container bleed-image-layout" id="slide8">
+    <div class="content-container">
+        <h2 class="slide-title">จิตวิทยาและบริบท</h2>
+        <div class="content-area">
+            <h3>ซุนวู: สงครามจิตวิทยา</h3>
+            <p>ทำให้ศัตรู "กลัว สับสน ลังเล คิดผิด" เน้นสงครามแบบหลบหลีก (Maneuver) หลีกเลี่ยงการปะทะตรงๆ ถ้าไม่จำเป็น</p>
+            <br>
+            <h3>คลอสวิทซ์: สงครามแตกหัก</h3>
+            <p>ใช้ "ความมุ่งมั่น" (Will) และพลังรบทำลายขวัญศัตรู เหมาะกับสงครามระหว่างรัฐที่ต้องการชัยชนะเด็ดขาดในการรบใหญ่</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/16641495304973141665" alt="ภาพวาดม้วนคัมภีร์จีนโบราณแสดงแผนการรบ">
+    </div>
+</div>
+
+<!-- Slide 9: Terrain, Speed & Drones (Table) -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">ภูมิประเทศ ความเร็ว และเทคโนโลยี</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">ประเด็น</th>
+                        <th>มุมมองซุนวู</th>
+                        <th>มุมมองคลอสวิทซ์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>การมองภูมิประเทศ</strong></td>
+                        <td>ใช้สร้างความได้เปรียบ เปลี่ยนสนามรบตามใจเรา</td>
+                        <td>ใช้เพื่อรวมกำลังและเคลื่อนเข้าจุดแตกหัก</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ความเร็วในการรุก</strong></td>
+                        <td>ความเร็ว = การตัดสินใจเร็ว & ข้อมูลเหนือกว่า</td>
+                        <td>ความเร็ว = โมเมนตัมการรุกที่ไม่หยุดชะงัก</td>
+                    </tr>
+                    <tr>
+                        <td><strong>โดรน/เทคโนโลยี</strong></td>
+                        <td><strong>"สายสืบห้าแบบ"</strong><br>เน้นการมองเห็น ข้อมูลข่าวสาร (Intel)</td>
+                        <td><strong>"อำนาจการยิงเพิ่ม"</strong><br>เน้นทำลาย COG หรือระบบสนับสนุน (Strike)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Modern Context (Image Right Text Left) -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">การรุกเชิงมโนทัศน์สมัยใหม่</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>ในยุคปัจจุบัน แนวคิดของทั้งสองยังคงถูกนำมาปรับใช้ผสมผสานกัน:</p>
+                <ul class="bullet-list" style="margin-top: 30px;">
+                    <li><strong>ซุนวู:</strong> การรุกเพื่อ "ทำให้ศัตรูไร้เสถียรภาพ" (Destabilize) เช่น สงครามไซเบอร์, สงครามข้อมูลข่าวสาร</li>
+                    <li><strong>คลอสวิทซ์:</strong> การรุกเพื่อ "บดทำลายขีดความสามารถ" (Degrade Capabilities) เช่น การใช้โดรนโจมตีโรงไฟฟ้า, คลังอาวุธ</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15143299809089085221" alt="เทคโนโลยีโดรนสมัยใหม่">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Pros & Cons (Two Column Tiled) -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">สรุปจุดเด่นและจุดอ่อน</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div style="border-left-color: #10b981;"> <!-- Green for Positive tone -->
+                <h3><i class="fa-solid fa-thumbs-up"></i> จุดเด่น</h3>
+                <p><strong>ซุนวู:</strong> ยืดหยุ่น คล่องตัว ลดความสูญเสีย เหมาะกับกองกำลังขนาดเล็กหรือสงครามอสมมาตร</p>
+                <p style="margin-top:20px;"><strong>คลอสวิทซ์:</strong> ชัดเจน ตรงไปตรงมา เด็ดขาด เหมาะกับสงครามเต็มรูปแบบที่ต้องการผลลัพธ์ถาวร</p>
+            </div>
+            <div style="border-left-color: #ef4444;"> <!-- Red for Negative tone -->
+                <h3><i class="fa-solid fa-thumbs-down"></i> จุดอ่อน</h3>
+                <p><strong>ซุนวู:</strong> หากต้องการชัยชนะที่ชัดเจนรวดเร็ว อาจไม่เพียงพอและดูเหมือนไม่กล้าปะทะ</p>
+                <p style="margin-top:20px;"><strong>คลอสวิทซ์:</strong> เสี่ยงต่อการสูญเสียมหาศาล และอาจนำไปสู่สงครามยืดเยื้อหากเผด็จศึกไม่ได้</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Quote -->
+<div class="slide-container" id="slide12">
+    <div class="content-area">
+        <div class="quote-layout">
+            <blockquote>"ร้อยรบมิพ่าย คือรู้เขารู้เรา...<br>แต่ยอดของความเก่งกล้า คือการชนะโดยไม่ต้องรบ"</blockquote>
+            <cite>- ซุนวู (Sun Tzu)</cite>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Q&A -->
+<div class="slide-container" id="slide13">
+    <div class="qa-layout">
+        <h2>Q&A</h2>
+        <p>เปิดรับคำถามและแลกเปลี่ยนความคิดเห็น</p>
+    </div>
+</div>
+
+</body>
+</html>
+```
