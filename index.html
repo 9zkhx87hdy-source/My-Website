@@ -329,7 +329,30 @@ body {
     font-size: 100px;
     color: #1e3a8a;
 }
+/* Layout สำหรับสไลด์ที่ต้องการให้รูปอยู่ด้านข้างข้อความ */
+.slide-container.bleed-image-layout {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;  /* ซ้าย:ข้อความ | ขวา:รูป */
+  align-items: stretch;
+}
 
+/* ให้กล่องข้อความด้านซ้ายดูไม่ชิดเกินไป */
+.bleed-image-layout .content-container {
+  padding-right: 40px;
+}
+
+/* กล่องรูปฝั่งขวาให้กินพื้นที่สูงสุดของสไลด์ */
+.bleed-image-layout .image-container {
+  height: 100%;
+}
+
+/* จัดให้รูปขยายเต็มกล่องด้านขวา */
+.bleed-image-layout .image-container img.bleed-image-side {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
     </style>
 </head>
 <body>
@@ -582,6 +605,7 @@ body {
 
 </body>
 </html>
+
 
 
 
