@@ -368,21 +368,36 @@ body {
 </div>
 
 <!-- Slide 2: Intro (Bleed Image Right) -->
-<div class="slide-container bleed-image-layout" id="slide2">
-    <div class="content-container">
-        <h2 class="slide-title">สองขั้วความคิด<br>แห่งยุทธศาสตร์</h2>
-            <h3 style="color: #93c5fd;">ซุนวู (Sun Tzu)</h3>
-            <p>ตัวแทนภูมิปัญญาตะวันออก เน้นความยืดหยุ่น การลวง และการเอาชนะด้วยปัญญาโดยไม่เสียเลือดเนื้อ</p>
-            <br>
-            <h3 style="color: #fda4af;">คลอสวิทซ์ (Clausewitz)</h3>
-            <p>บิดาทฤษฎีการทหารตะวันตก เน้นพลังการรบ มวลกำลัง และการทำลายล้างเพื่อผลลัพธ์ทางการเมือง</p>
-        </div>
-    </div>
-    <div class="image-container">
-  <img class="bleed-image-side"
-       src="Watercolor Sun Tzu Portrait.png"
-       alt="รูปปั้นซุนวูแสดงถึงความสงบและปัญญา">
-</div>
+<div class="slide-container" id="slide2"
+     style="display: flex; align-items: stretch;">
+
+  <!-- ฝั่งซ้าย: เนื้อหาในกรอบน้ำเงิน -->
+  <div style="flex: 2; background-color: #0b3b82; color: #ffffff; padding: 60px 50px;">
+      <h2 class="slide-title" style="color: #ffffff; margin-bottom: 20px;">
+          สองขั้วความคิด<br>แห่งยุทธศาสตร์
+      </h2>
+      <hr style="width: 150px; border: 3px solid #91c1c9; margin: 0 0 25px 0;">
+
+      <h3 style="color: #93c5fd; margin-top: 10px;">ซุนวู (Sun Tzu)</h3>
+      <p style="margin-top: 8px;">
+          ตัวแทนภูมิปัญญาตะวันออก เน้นความยืดหยุ่น การลวงศัตรู
+          และการเอาชนะด้วยปัญญาโดยไม่เสียเลือดเนื้อ
+      </p>
+
+      <h3 style="color: #fda4af; margin-top: 20px;">คลอสวิทซ์ (Clausewitz)</h3>
+      <p style="margin-top: 8px;">
+          บิดาทฤษฎีการทหารตะวันตก เน้นพลังการรบ มวลกำลัง
+          และการทำลายกำลังข้าศึกเพื่อผลลัพธ์ทางการเมือง
+      </p>
+  </div>
+
+  <!-- ฝั่งขวา: รูปภาพ -->
+  <div style="flex: 1.5; background-color: #fcf4df;">
+      <img src="Watercolor Sun Tzu Portrait.png"
+           alt="ภาพวาดซุนวู"
+           style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+
 </div>
 
 <!-- Slide 3: Philosophy & Essence (Two Column Tiled) -->
@@ -605,6 +620,7 @@ body {
 
 </body>
 </html>
+
 
 
 
